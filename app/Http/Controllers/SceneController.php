@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Scene;
-use Illuminate\Http\Request;
 
 class SceneController extends Controller
 {
@@ -15,7 +14,7 @@ class SceneController extends Controller
      */
     public function index()
     {
-            return Scene::all();
+        return Scene::all();
     }
 
     /**
