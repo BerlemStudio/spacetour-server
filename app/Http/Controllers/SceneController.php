@@ -22,9 +22,17 @@ class SceneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $scene = new Scene();
+        $scene->name = $request->name;
+        $scene->scene_name = $request->scene_name;
+        $scene->description = $request->description;
+        $scene->image_path = $request->image_path;
+
+        $scene->save;
+
+        return $scene;
     }
 
     /**

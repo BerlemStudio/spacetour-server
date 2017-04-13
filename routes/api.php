@@ -20,11 +20,6 @@ $routeResource = [
 ];
 
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('scene', 'SceneController@index');
+    Route::resource('scene', 'SceneController');
+    // Route::get('scene', 'SceneController@index');
 });
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// Route::resource('scene', 'SceneController', $routeResource);
-// Route::get('scene', 'SceneController@index');
