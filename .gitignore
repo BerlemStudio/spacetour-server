@@ -7,3 +7,7 @@
 Homestead.json
 Homestead.yaml
 .env
+*.sqlite
+/.vagrant
+composer.phar
+composer.lock
