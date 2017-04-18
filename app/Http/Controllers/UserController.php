@@ -9,11 +9,10 @@ class UserController extends Controller {
     public function store(Request $request){
         // $this->authorize('create', User::class);
         // $User = new user();
-        $input['name'] = $request->name;
+        $input['name'] = $request->input('name');
         $input['password'] = bcrypt($request->input('password'));
         $input['email'] = $request->input('email');
         return User::create($input);
-        
         
     }
 }
