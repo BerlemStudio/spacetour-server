@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\User;
+
 class UserController extends Controller {
     public function store(Request $request){
-        $this->authorize('create', User::class);
-        // encrypt before insert to database
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-
+        // $this->authorize('create', User::class);
+        // $User = new user();
+        $input['name'] = $request->name;
+        $input['password'] = bcrypt($request->input('password'));
+        $input['email'] = $request->input('email');
         return User::create($input);
+        
+        
     }
 }

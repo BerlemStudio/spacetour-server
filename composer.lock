@@ -2532,6 +2532,7 @@
         },
         {
             "name": "zendframework/zend-diactoros",
+
             "version": "1.4.0",
             "source": {
                 "type": "git",

@@ -21,9 +21,9 @@ $routeResource = [
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
-Route::get('scene', 'SceneController@index');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('scene', 'SceneController');
     // Route::get('scene', 'SceneController@index');
 });
+
 Route::post('register', 'UserController@store');
