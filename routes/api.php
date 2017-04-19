@@ -25,5 +25,4 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('scene', 'SceneController');
     // Route::get('scene', 'SceneController@index');
 });
-
 Route::post('register', 'UserController@store');
