@@ -5,6 +5,9 @@ namespace App;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\User_story_list;
+use App\Models\Story;
+use App\Models\Scene;
 
 class User extends Authenticatable
 {
@@ -27,4 +30,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Story(){
+        return $this->belongsToMany(Story::class, 'user_story_lists', 'user_id' , 'story_id');
+    }
+    public function Scene(){
+        return $this->belongsToMany(Scene::class, 'user_scene_lists', 'user_id' , 'scene_id');
+    }
 }
