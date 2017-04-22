@@ -31,10 +31,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Story(){
-        return $this->belongsToMany(Story::class, 'user_story_lists', 'user_id' , 'story_id');
+    public function story(){
+        return $this->hasMany(Story::class, 'user_story_lists', 'user_id' , 'story_id');
     }
-    public function Scene(){
+    public function scene(){
         return $this->belongsToMany(Scene::class, 'user_scene_lists', 'user_id' , 'scene_id');
+    }
+    public function user_scene_list(){
+        return $this->hasMany(User_scene_list::class);
     }
 }
