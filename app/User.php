@@ -32,7 +32,7 @@ class User extends Authenticatable
     ];
 
     public function story(){
-        return $this->hasMany(Story::class, 'user_story_lists', 'user_id' , 'story_id');
+        return $this->hasMany(Story::class, 'created_by');
     }
     public function scene(){
         return $this->belongsToMany(Scene::class, 'user_scene_lists', 'user_id' , 'scene_id');

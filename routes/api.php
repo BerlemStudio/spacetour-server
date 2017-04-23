@@ -26,6 +26,9 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('user_scene_list' , 'UserController@user_scene_list');
         Route::get('user_scene_list_unlock', 'UserController@user_scene_list_unlocked');
         Route::post('unlock', 'UserController@unlockScene');
+        Route::get('currentuser', 'UserController@user');
+        Route::post('story/create', 'UserController@create_story');
+        Route::get('story', 'UserController@story');
     });
     Route::resource('scene', 'SceneController');
     Route::resource('story', 'StoryController');

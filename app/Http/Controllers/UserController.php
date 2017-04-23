@@ -35,7 +35,8 @@ class UserController extends Controller {
         return $request->user()->user_scene_list()->with('scene')->get(['user_id','scene_id','unlock']);
     }
     public function unlockScene(Request $request){
-        $user_id = $request->user_id;
+        $user_id = $request->user()->id;
+        // $user_id = $request->user_id;
         $scene_id = $request->scene_id;
         $user_scene_list = User_scene_list::where('user_id',$user_id)->where('scene_id',$scene_id);
         $new_user_scene_list = array("unlock" => true);
@@ -44,5 +45,20 @@ class UserController extends Controller {
     }
     public function user_scene_list_unlocked(Request $request){
         return $request->user()->user_scene_list()->with('scene')->where('unlock',true)->get(['user_id','scene_id','unlock']);
+    }
+    public function user(Request $request){
+        return $request->user();
+    }
+    public function create_story(Request $request){
+        $story = Story::create([
+            'name' =>  $request->name,
+            'description' => $request->description,
+            'public' => 0,
+            'created_by' => $request->user()->id,
+        ]);
+        return $story;
+    }
+    public function story(Request $request){
+        return $request->user()->story()->get();
     }
 }
