@@ -9,6 +9,7 @@ use App\Models\Story;
 use App\User_story_list;
 use App\Models\Scene;
 use App\User_scene_list;
+use App\Stories_scene_list;
 
 class UserController extends Controller {
     public function store(Request $request){
@@ -56,9 +57,17 @@ class UserController extends Controller {
             'public' => 0,
             'created_by' => $request->user()->id,
         ]);
-        return $story;
+        $scene = $request->scene_list;
+        // $sceneJson = json_decode($scene);
+        foreach ($scene as &$value) {
+            $storylist = Stories_scene_list::create([
+                'story_id' =>  $story->id,
+                'scene_id' => $value,
+            ]);
+        }
+        return $storylist;
     }
     public function story(Request $request){
-        return $request->user()->story()->get();
+        return $request->user()->story()->with('Scene')->get();
     }
 }

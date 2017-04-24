@@ -10,10 +10,10 @@ class Story extends Model
     protected $fillable = ['name', 'description', 'public', 'created_by'];
 
     public function User() {
-        $this->belongsTo('App\User', 'created_by');
+        return $this->belongsTo('App\User', 'created_by');
     }
 
     public function Scene(){
-
+        return $this->belongsToMany(Scene::class, 'stories_scene_lists', 'story_id' , 'scene_id');
     }
 }

@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 */
 $routeResource = [
     'except' => [
-        'create',
         'edit'
     ]
 ];
