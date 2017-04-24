@@ -71,7 +71,7 @@ class SceneController extends Controller
      */
     public function show($id)
     {
-        //
+        return Scene::where('id', $id)->get();
     }
 
     /**
