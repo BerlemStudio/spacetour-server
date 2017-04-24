@@ -41,7 +41,7 @@ class UserController extends Controller {
         $user_scene_list = User_scene_list::where('user_id',$user_id)->where('scene_id',$scene_id);
         $new_user_scene_list = array("unlock" => true);
         $user_scene_list->update($new_user_scene_list);
-        return $user_scene_list->get();
+        return $user_scene_list->first();
     }
     public function user_scene_list_unlocked(Request $request){
         return $request->user()->user_scene_list()->with('scene')->where('unlock',true)->get(['user_id','scene_id','unlock']);
