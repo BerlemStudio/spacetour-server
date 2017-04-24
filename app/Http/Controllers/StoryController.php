@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Story;
+use App\Stories_scene_list;
+
 
 class StoryController extends Controller
 {
@@ -84,6 +86,11 @@ class StoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $story = Story::where('id', $id);
+        $scene = Stories_scene_list::where('story_id',$id);
+        $scene->delete();
+        $story_mock = $story->get();
+        $story->delete();
+        return $story_mock;
     }
 }
